@@ -45,6 +45,7 @@
 		0C6F9FD91EDCF6B70086D072 /* Spotter (Spotify Menu Bar Player)UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotter (Spotify Menu Bar Player)UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6F9FDD1EDCF6B70086D072 /* Spotter__Spotify_Menu_Bar_Player_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotter__Spotify_Menu_Bar_Player_UITests.swift; sourceTree = "<group>"; };
 		0C6F9FDF1EDCF6B70086D072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C6F9FEB1EDCF8080086D072 /* Spotter (Spotify Menu Bar Player).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Spotter (Spotify Menu Bar Player).entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +96,7 @@
 		0C6F9FBF1EDCF6B70086D072 /* Spotter (Spotify Menu Bar Player) */ = {
 			isa = PBXGroup;
 			children = (
+				0C6F9FEB1EDCF8080086D072 /* Spotter (Spotify Menu Bar Player).entitlements */,
 				0C6F9FC01EDCF6B70086D072 /* AppDelegate.swift */,
 				0C6F9FC21EDCF6B70086D072 /* ViewController.swift */,
 				0C6F9FC41EDCF6B70086D072 /* Assets.xcassets */,
@@ -191,6 +193,11 @@
 					0C6F9FBC1EDCF6B60086D072 = {
 						CreatedOnToolsVersion = 8.3.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					0C6F9FCD1EDCF6B70086D072 = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -399,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Spotter (Spotify Menu Bar Player)/Spotter (Spotify Menu Bar Player).entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spotter (Spotify Menu Bar Player)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -412,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Spotter (Spotify Menu Bar Player)/Spotter (Spotify Menu Bar Player).entitlements";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Spotter (Spotify Menu Bar Player)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
