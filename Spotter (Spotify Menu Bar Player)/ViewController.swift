@@ -13,18 +13,15 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
-    var buttonPresses = 0
+    
     var statusBar = NSStatusBar.system()
     var statusBarItem : NSStatusItem = NSStatusItem()
-    var openMenuItem : NSMenuItem = NSMenuItem()
-    var exitMenuItem : NSMenuItem = NSMenuItem()
-    var theMenu = NSMenu()
+    var theMenu: NSMenu = NSMenu()
     
     @IBOutlet weak var button: NSButton!
     @IBOutlet weak var TextTitle: NSTextField!
     @IBAction func PressButton(_ sender: Any) {
-        buttonPresses += 1
+        
         setLabelMessage()
     }
     
@@ -34,38 +31,68 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         statusBarItem = statusBar.statusItem(withLength: -1)
         statusBarItem.menu = theMenu
         
-        openMenuItem.title = "Open"
-        openMenuItem.target = self
-        openMenuItem.action = #selector(setWindowVisible)
-        openMenuItem.keyEquivalent = ""
+        theMenu.addItem(withTitle: "Open Console", action: #selector(setWindowVisible), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Play/Pause", action: #selector(pauseplay), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Previous Track", action: #selector(prev), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Next Track", action: #selector(next), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Quit", action: #selector(quit), keyEquivalent: "")
+        for index in 0...4 {
+            theMenu.item(at: index)?.target = self
+        }
         
-        exitMenuItem.title = "Quit"
-        exitMenuItem.target = self
-        exitMenuItem.action = #selector(quit)
-        exitMenuItem.keyEquivalent = ""
-        
-        theMenu.addItem(openMenuItem)
-        theMenu.addItem(exitMenuItem)
         setLabelMessage()
     }
-
+    
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
+    
     func setLabelMessage(){
-        TextTitle.stringValue = "You've Pressed the button"
-        statusBarItem.button?.title = "Presses: \(buttonPresses)"
+        TextTitle.stringValue = "Welcome"
+        statusBarItem.button?.title = "Spotter"
     }
-
+    
     func setWindowVisible(sender: AnyObject){
         self.view.window!.orderFrontRegardless()
+    }
+    
+    func pauseplay() {
+        let scriptText = "tell application \"Spotify\"\nplaypause\nend tell"
+        var error: NSDictionary?
+        if let script = NSAppleScript(source: scriptText){
+            script.executeAndReturnError(&error)
+        }
+        else if(error != nil) {
+            print("error while pausing or playing")
+        }
+    }
+    
+    func next() {
+        let scriptText = "tell application \"Spotify\"\nnext track\nend tell"
+        var error: NSDictionary?
+        if let script = NSAppleScript(source: scriptText){
+            script.executeAndReturnError(&error)
+        }
+        else if(error != nil) {
+            print("error while pausing or playing")
+        }
+    }
+    
+    func prev() {
+        let scriptText = "tell application \"Spotify\"\nprevious track\nend tell"
+        var error: NSDictionary?
+        if let script = NSAppleScript(source: scriptText){
+            script.executeAndReturnError(&error)
+        }
+        else if(error != nil) {
+            print("error while pausing or playing")
+        }
     }
     
     func quit(sender: AnyObject) {

@@ -507,6 +507,7 @@
 				0C6F9FE41EDCF6B70086D072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C6F9FE51EDCF6B70086D072 /* Build configuration list for PBXNativeTarget "Spotter (Spotify Menu Bar Player)Tests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +516,7 @@
 				0C6F9FE71EDCF6B70086D072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0C6F9FE81EDCF6B70086D072 /* Build configuration list for PBXNativeTarget "Spotter (Spotify Menu Bar Player)UITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +525,7 @@
 				0C6F9FEA1EDCF6B70086D072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
