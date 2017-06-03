@@ -22,7 +22,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var TextTitle: NSTextField!
     @IBAction func PressButton(_ sender: Any) {
         
-        setLabelMessage()
     }
     
     override func awakeFromNib() {
@@ -39,8 +38,11 @@ class ViewController: NSViewController {
         theMenu.addItem(withTitle: "Play/Pause", action: #selector(pauseplay), keyEquivalent: "")
         theMenu.addItem(withTitle: "Previous Track", action: #selector(prev), keyEquivalent: "")
         theMenu.addItem(withTitle: "Next Track", action: #selector(next), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Volume Up", action: #selector(volumeUp), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Volume Down", action: #selector(volumeDown), keyEquivalent: "")
+        theMenu.addItem(withTitle: "Mute", action: #selector(mute), keyEquivalent: "")
         theMenu.addItem(withTitle: "Quit", action: #selector(quit), keyEquivalent: "")
-        for index in 0...4 {
+        for index in 0...7 {
             theMenu.item(at: index)?.target = self
         }
         
@@ -95,6 +97,39 @@ class ViewController: NSViewController {
         }
     }
     
+    func mute() {
+        let scriptText = "tell application \"Spotify\"\nset sound volume to 0\nend tell"
+        var error: NSDictionary?
+        if let script = NSAppleScript(source: scriptText){
+            script.executeAndReturnError(&error)
+        }
+        else if(error != nil) {
+            print("error while pausing or playing")
+        }
+    }
+    
+    func volumeUp() {
+        let scriptText = "tell application \"Spotify\"\nif sound volume < 90 then\nset sound volume to sound volume + 10\nelse\nset sound volume to 100\nend if\nend tell"
+        var error: NSDictionary?
+        if let script = NSAppleScript(source: scriptText){
+            script.executeAndReturnError(&error)
+        }
+        else if(error != nil) {
+            print("error while pausing or playing")
+        }
+    }
+    
+    func volumeDown() {
+        let scriptText = "tell application \"Spotify\"\nif sound volume > 10 then\nset sound volume to sound volume - 10\nelse\nset sound volume to 0\nend if\nend tell"
+        var error: NSDictionary?
+        if let script = NSAppleScript(source: scriptText){
+            script.executeAndReturnError(&error)
+        }
+        else if(error != nil) {
+            print("error while pausing or playing")
+        }
+    }
+
     func quit(sender: AnyObject) {
         NSApp.terminate(self)
     }
